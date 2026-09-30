@@ -1,0 +1,38 @@
+<h1>Fotos</h1>
+<p class="hint">Sube una o varias imágenes. La base de datos es ficticia (memoria del backend).</p>
+
+<label class="upload">
+  <input type="file" accept="image/*" multiple (change)="onFiles($event)" [disabled]="loading()" />
+  {{ loading() ? 'Subiendo…' : 'Elegir fotos' }}
+</label>
+
+@if (message()) {
+  <div class="result ko">{{ message() }}</div>
+}
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Foto</th>
+      <th>Nombre</th>
+      <th>Tamaño</th>
+      <th>Subida</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (p of photos(); track p.id) {
+      <tr>
+        <td>{{ p.id }}</td>
+        <td><img [src]="api + '/' + p.id + '/imagen'" [alt]="p.filename" /></td>
+        <td>{{ p.filename }}</td>
+        <td>{{ (p.size / 1024).toFixed(1) }} KB</td>
+        <td>{{ p.uploadedAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="5" class="empty">Todavía no hay fotos.</td>
+      </tr>
+    }
+  </tbody>
+</table>

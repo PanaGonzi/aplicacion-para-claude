@@ -1,0 +1,18 @@
+<h1>Pomodoro</h1>
+
+<div class="modes">
+  <button [class.active]="mode() === 'foco'" (click)="setMode('foco')">Foco · 25 min</button>
+  <button [class.active]="mode() === 'descanso'" (click)="setMode('descanso')">Descanso · 5 min</button>
+</div>
+
+<div class="clock" [class.rest]="mode() === 'descanso'">
+  <div class="time">{{ display() }}</div>
+  <div class="bar"><div class="fill" [style.width.%]="progress() * 100"></div></div>
+</div>
+
+<div class="controls">
+  <button class="primary" (click)="toggle()">{{ running() ? 'Pausar' : 'Empezar' }}</button>
+  <button (click)="reset()">Reiniciar</button>
+</div>
+
+<p class="count">Sesiones de foco completadas: <strong>{{ completed() }}</strong></p>

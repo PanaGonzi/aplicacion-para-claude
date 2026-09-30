@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  padding: 2rem;
+  max-width: 28rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.modes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modes .active {
+  background: #111827;
+  border-color: #111827;
+  color: #fff;
+}
+
+.clock {
+  margin: 1.5rem 0;
+  padding: 2rem;
+  border-radius: 12px;
+  background: #fee2e2;
+  text-align: center;
+}
+
+.clock.rest {
+  background: #dcfce7;
+}
+
+.time {
+  font-size: 4.5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.bar {
+  height: 6px;
+  margin-top: 1rem;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #111827;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+.count {
+  margin-top: 1.5rem;
+  color: #666;
+}

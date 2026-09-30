@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  padding: 2rem;
+  max-width: 44rem;
+}
+
+.hint {
+  color: #666;
+}
+
+.upload {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.upload input {
+  display: none;
+}
+
+.file {
+  margin-left: 0.8rem;
+  color: #444;
+}
+
+.result {
+  margin-top: 1.2rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+}
+
+.ok {
+  background: #dcfce7;
+  color: #14532d;
+}
+
+.ko {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+.errors {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.errors li {
+  margin-bottom: 0.4rem;
+}
+
+.pos,
+.sug {
+  margin-left: 0.6rem;
+  color: #666;
+  font-size: 0.9em;
+}

@@ -1,0 +1,40 @@
+<h1>Revisor de ortografía</h1>
+<p class="hint">
+  Sube un <code>.txt</code>, <code>.md</code> o <code>.docx</code> en español. Solo se guarda si no tiene faltas.
+  La base de datos es ficticia (memoria del backend).
+</p>
+
+<label class="upload">
+  <input type="file" accept=".txt,.md,.docx" (change)="onFile($event)" [disabled]="loading()" />
+  {{ loading() ? 'Revisando…' : 'Elegir documento' }}
+</label>
+@if (fileName()) {
+  <span class="file">{{ fileName() }}</span>
+}
+
+@if (saved(); as doc) {
+  <div class="result ok">
+    Sin faltas. Documento guardado (id {{ doc.id }}, {{ doc.characters }} caracteres).
+  </div>
+}
+
+@if (errors().length) {
+  <div class="result ko">
+    Se han encontrado {{ errors().length }} posibles faltas. El documento <strong>no</strong> se ha guardado.
+  </div>
+  <ul class="errors">
+    @for (e of errors(); track $index) {
+      <li>
+        <strong>{{ e.word }}</strong>
+        <span class="pos">línea {{ e.line }}, col. {{ e.column }}</span>
+        @if (e.suggestions.length) {
+          <span class="sug">¿Quisiste decir: {{ e.suggestions.join(', ') }}?</span>
+        }
+      </li>
+    }
+  </ul>
+}
+
+@if (message()) {
+  <div class="result ko">{{ message() }}</div>
+}

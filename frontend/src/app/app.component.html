@@ -1,3 +1,15 @@
+<button
+  type="button"
+  class="menu-button"
+  aria-controls="sidebar"
+  [attr.aria-expanded]="menuOpen()"
+  (click)="menuOpen.set(!menuOpen())"
+>
+  {{ menuOpen() ? 'Cerrar menú' : 'Menú' }}
+</button>
+
+<app-sidebar id="sidebar" [class.open]="menuOpen()" [backend]="backend()" />
+
 <main>
-  <div class="box" [class.error]="error()">{{ message() }}</div>
+  <router-outlet />
 </main>

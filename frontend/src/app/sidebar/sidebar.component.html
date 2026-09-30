@@ -1,0 +1,57 @@
+<a class="brand" routerLink="/">
+  <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+    <rect x="2" y="6" width="28" height="20" rx="3" />
+    <rect x="11" y="13" width="10" height="4" rx="2" class="handle" />
+  </svg>
+  <span>Cajón desastre</span>
+</a>
+
+<nav aria-label="Aplicaciones">
+  <a class="item home" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z" /></svg>
+    Home
+  </a>
+
+  @if (apps.length) {
+    <p class="group-title" id="apps-title">Aplicaciones</p>
+    <ul aria-labelledby="apps-title">
+      @for (app of apps; track app.slug) {
+        <li class="folder" [class.open]="open().has(app.slug)">
+          <button
+            type="button"
+            class="item"
+            [attr.aria-expanded]="open().has(app.slug)"
+            [attr.aria-controls]="'folder-' + app.slug"
+            (click)="toggle(app.slug)"
+          >
+            <svg class="folder-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            </svg>
+            <span class="name">{{ app.name }}</span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+          </button>
+          <div class="pages" [id]="'folder-' + app.slug">
+            <ul>
+              @for (page of app.pages; track page.path) {
+                <li>
+                  <a class="page" [routerLink]="['/', app.slug, page.path]" routerLinkActive="active">{{ page.title }}</a>
+                </li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">Aún no hay aplicaciones. Cuando añadas una, aparecerá aquí.</p>
+  }
+</nav>
+
+<p class="status" [class]="'status ' + backend()" role="status">
+  <span class="dot"></span>
+  @switch (backend()) {
+    @case ('ok') { Backend conectado }
+    @case ('down') { Backend sin conexión }
+    @default { Conectando con el backend }
+  }
+</p>

@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --slate: #1e2436;
+  --slate-text: #d5d9e6;
+  --slate-muted: #98a0b8;
+  --paper: #eceef3;
+  --ink: #161b2b;
+  --ink-soft: #4b5268;
+  --tape: #f2c230;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}

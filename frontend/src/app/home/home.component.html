@@ -1,0 +1,30 @@
+<header>
+  <h1>Home</h1>
+  <p>Todas las aplicaciones que hay en el cajón.</p>
+</header>
+
+@if (apps.length) {
+  <ul class="grid">
+    @for (app of apps; track app.slug) {
+      <li>
+        <a class="folder" [routerLink]="app.pages.length ? ['/', app.slug, app.pages[0].path] : null">
+          <span class="tab">{{ app.name }}</span>
+          <span class="body">
+            <span class="desc">{{ app.description }}</span>
+            <span class="count">
+              {{ app.pages.length }} {{ app.pages.length === 1 ? 'página' : 'páginas' }}
+            </span>
+          </span>
+        </a>
+      </li>
+    }
+  </ul>
+} @else {
+  <section class="empty">
+    <h2>El cajón está vacío</h2>
+    <p>
+      Crea una carpeta en <code>src/app/apps/mi-app</code> con un archivo <code>app.meta.ts</code> y la
+      aplicación aparecerá aquí y en el sidebar. Los pasos están en <code>src/app/apps/README.md</code>.
+    </p>
+  </section>
+}

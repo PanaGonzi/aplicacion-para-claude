@@ -1,0 +1,20 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.box {
+  padding: 24px 48px;
+  border: 2px solid #2e7d32;
+  border-radius: 8px;
+  color: #2e7d32;
+  font-size: 1.5rem;
+}
+
+.box.error {
+  border-color: #c62828;
+  color: #c62828;
+}
